@@ -1,13 +1,16 @@
 import Link from "next/link";
+import { products } from "@/lib/products";
 
-export default function Egal({ brokkoli }) {
+export default function Homepage() {
   return (
-    <>
-      <h1> Hallo Welt!</h1>
-      <h2>{brokkoli}</h2>
-      <Link href="/apfel">Apfel</Link>
-      <hr />
-      <a href="/apfel">Apfel old</a>
-    </>
+    <ul>
+      {products.map((product) => {
+        return (
+          <li key={product.id}>
+            {product.name} <Link href={`/${product.id}`}>Detailspage</Link>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
